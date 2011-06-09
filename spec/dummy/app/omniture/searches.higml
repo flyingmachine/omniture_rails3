@@ -1,0 +1,10 @@
+@import application.higml
+
+:channel searches
+
+action:new
+  :pageName= "new search"
+  :keywords= params[:keywords]
+
+action:index
+  :pageName= "list"

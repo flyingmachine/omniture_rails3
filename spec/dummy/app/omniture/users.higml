@@ -6,4 +6,4 @@ action:show
   :pageName= "user #{@member.id}"
 
 action:index
-  :pageName= "user list"
+  :pageName= "list"

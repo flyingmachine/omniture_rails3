@@ -20,7 +20,7 @@ module OmnitureRails3
       var s_account="#{OmnitureRails3.config.tracking_account}";
       var s=s_gi(s_account);
 
-      $.extend(s, #{sprops})
+      $.extend(s, #{sprops_json})
 
       /* WARNING: Changing the visitor namespace will cause drastic changes
       to how your visitor data is collected.  Changes should only be made
@@ -32,13 +32,24 @@ module OmnitureRails3
       EOS
     end
   
-    def sprops
-      Higml.
+    def sprops_json
+      sprops = Higml.
         values_for(omniture_input, OmnitureRails3::TREES[controller_name.to_sym], self, omniture_priority_map || {}).
-        delete_if{|k,v| !v}.
-        inject({}){|return_value, value| return_value[value[0]] = h(value[1]); return_value }. #html escape
+        delete_if{|k,v| !v}
+      
+      transform_sprops(sprops)
+      
+      sprops.inject({}){|return_value, value| return_value[value[0]] = h(value[1]); return_value }. #html escape
         to_json.
         gsub(/,\s*"/,",\n\"") #put each variable on a separate line
+    end
+    
+    def transform_sprops(sprops)
+      OmnitureRails3.config.prop_map.each do |internal_name, omniture_name|
+        sprops[omniture_name] = sprops[internal_name]
+        sprops.delete(internal_name)
+      end
+      sprops
     end
   end
 end

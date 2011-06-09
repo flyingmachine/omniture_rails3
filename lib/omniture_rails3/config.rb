@@ -41,12 +41,12 @@ module OmnitureRails3
     end
     
     def set_with_io(config)
-      set_with_hash(YAML.load(config))
+      set_with_yaml(config)
       config.close
     end
     
     def set_with_yaml(config)
-      set_with_hash(YAML.load(config))
+      set_with_hash(YAML.load(config)[Rails.env])
     end
     
     def to_hash
