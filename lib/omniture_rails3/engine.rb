@@ -8,7 +8,6 @@ module OmnitureRails3
       # Parse Higml trees and store them so we don't have to do this every request
       
       OmnitureRails3::TREES = Dir[File.join(OmnitureRails3.config.higml_directory, '*.higml')].inject({}) do |hash, filename|
-        puts filename
         hash[File.basename(filename, ".higml").to_sym] = Higml::Parser.new(File.read(filename)).to_tree
         hash
       end
