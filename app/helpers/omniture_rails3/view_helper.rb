@@ -9,7 +9,7 @@ module OmnitureRails3
         <script language="JavaScript"><!--
         if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
         //--></script><noscript><img
-        src="#{OmnitureRails.config.noscript_img_src}"
+        src="#{OmnitureRails3.config.noscript_img_src}"
         height="1" width="1" border="0" alt="" /></noscript><!--/DO NOT REMOVE/-->
         <!-- End SiteCatalyst code version: H.1. -->
       EOS
@@ -17,7 +17,7 @@ module OmnitureRails3
   
     def omniture_javascript
       <<-EOS
-      var s_account="#{OmnitureRails.config.tracking_account}";
+      var s_account="#{OmnitureRails3.config.tracking_account}";
       var s=s_gi(s_account);
 
       $.extend(s, #{sprops})
@@ -25,7 +25,7 @@ module OmnitureRails3
       /* WARNING: Changing the visitor namespace will cause drastic changes
       to how your visitor data is collected.  Changes should only be made
       when instructed to do so by your account manager.*/
-      s.visitorNamespace="#{OmnitureRails.config.visitor_namespace}"
+      s.visitorNamespace="#{OmnitureRails3.config.visitor_namespace}"
 
       /************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
       var s_code=s.t();if(s_code)document.write(s_code)
@@ -33,7 +33,7 @@ module OmnitureRails3
     end
   
     def sprops
-      OmnitureRails.
+      OmnitureRails3.
         values_for(omniture_input, OmnitureRails::TREES[controller_name.to_sym], {}, self).
         delete_if{|k,v| !v}.
         inject({}){|return_value, value| return_value[value[0]] = h(value[1]); return_value }. #html escape

@@ -1,0 +1,9 @@
+@import application.higml
+
+:channel users
+
+action:show
+  :pageName= "user #{@member.id}"
+
+action:index
+  :pageName= "user list"

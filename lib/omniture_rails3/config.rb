@@ -3,7 +3,6 @@ module OmnitureRails3
     include Singleton
     OPTIONS = %w{higml_directory prop_map tracking_account visitor_namespace noscript_img_src}
     attr_accessor *OPTIONS.collect{|o|o.to_sym}
-
     
     def set(config)
       case config
@@ -35,6 +34,13 @@ module OmnitureRails3
     
     def set_with_yaml(config)
       set_with_hash(YAML.load(config))
+    end
+    
+    def to_hash
+      OPTIONS.inject({}){ |hash, option|
+        hash[option] = self.send(option)
+        hash
+      }
     end
   end
 end
