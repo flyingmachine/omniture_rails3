@@ -1,0 +1,3 @@
+h1. Omniture Rails 3
+
+This engine is meant to help app developers easily set Omniture sprops. It uses "Higml":https://github.com/flyingmachine/higml to configure custom variables based on controller, action, and whatever other params are present. It also allows you to provide a mapping between your custom variable names and their omniture name - i.e. you can refer to "prop34" as "search\_origin" in your code and in your configuration.
