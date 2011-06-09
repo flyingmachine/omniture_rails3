@@ -33,8 +33,8 @@ module OmnitureRails3
     end
   
     def sprops
-      OmnitureRails3.
-        values_for(omniture_input, OmnitureRails::TREES[controller_name.to_sym], {}, self).
+      Higml.
+        values_for(omniture_input, OmnitureRails3::TREES[controller_name.to_sym], self, omniture_priority_map || {}).
         delete_if{|k,v| !v}.
         inject({}){|return_value, value| return_value[value[0]] = h(value[1]); return_value }. #html escape
         to_json.

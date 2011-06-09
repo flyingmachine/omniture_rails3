@@ -50,4 +50,8 @@ describe OmnitureRails3::Config do
     OmnitureRails3.config.visitor_namespace.should == "c"
     OmnitureRails3.config.noscript_img_src.should == "d"
   end
+  
+  it "sets Higml's global pairs" do
+    
+  end
 end

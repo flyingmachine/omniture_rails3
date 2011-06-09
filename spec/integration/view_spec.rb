@@ -6,9 +6,8 @@ describe OmnitureRails3 do
   describe "handling higml files" do
     context "viewing actions belonging to diffent controllers" do
       it "prints the value 'users' for the channel when viewing an action in the users controller" do
-        pending
         visit users_path
-        page.should have_content("channel: users")
+        page.should have_content("channel: 'users'")
       end
       it "prints the value 'posts' for the channel when viewing an action in the posts controller"
     end

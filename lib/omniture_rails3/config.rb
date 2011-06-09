@@ -4,12 +4,25 @@ module OmnitureRails3
     OPTIONS = %w{higml_directory prop_map tracking_account visitor_namespace noscript_img_src}
     attr_accessor *OPTIONS.collect{|o|o.to_sym}
     
+    def higml_directory
+      @higml_directory ||= File.join(Rails.root, "app", "omniture")
+    end
+    
     def set(config)
       case config
       when Hash: set_with_hash(config)
       when IO: set_with_io(config)
       when String: set_with_string(config)
       end
+      
+      Higml.config.set({
+        "global_pairs" => {
+          :visitor_namespace => visitor_namespace,
+          :tracking_account  => tracking_account,
+          :noscript_img_src  => noscript_img_src
+        },
+        "higml_directory" => self.higml_directory
+      })
     end
     
     def set_with_hash(config)

@@ -1,0 +1,17 @@
+common: &common
+  visitor_namespace: test_namespace
+  noscript_img_src: http://test/0
+  prop_map:
+    :keywords: :prop10
+
+development:
+  <<: *common
+  tracking_account: 'development'
+
+production:
+  <<: *common
+  tracking_account: 'production'
+
+test:
+  <<: *common
+  tracking_account: 'ignore'

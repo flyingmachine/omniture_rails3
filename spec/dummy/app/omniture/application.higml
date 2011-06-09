@@ -1,0 +1,11 @@
+:charSet UTF-8
+:currencyCode USD
+:linkLeaveQueryString= false
+:linkTrackVars None
+:linkTrackEvents None
+
+:trackDownloadLinks= true
+:trackExternalLinks= true
+:trackInlineStats= true
+:linkDownloadFileTypes zip,wav,mp3,mov,mpg,avi,doc,pdf,xls,ppt
+:linkInternalFilters= "javascript:,#{request.host}"

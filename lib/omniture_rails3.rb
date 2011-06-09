@@ -1,4 +1,5 @@
 require "higml"
+require "omniture_rails3/action_controller_extension"
 require "omniture_rails3/config"
 require "omniture_rails3/engine"
 
