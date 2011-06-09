@@ -1,0 +1,2 @@
+module OmnitureRails3
+end
