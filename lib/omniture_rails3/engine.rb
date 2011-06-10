@@ -1,6 +1,6 @@
 module OmnitureRails3
   class Engine < Rails::Engine
-    initializer 'omniture_rails_3.helper' do |app|
+    initializer 'omniture_rails_3.initializer' do |app|
       ActionView::Base.send :include, OmnitureRails3::ViewHelper
       ActionController::Base.send :include, OmnitureRails3::ActionControllerExtension
       
