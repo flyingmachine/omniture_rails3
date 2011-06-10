@@ -33,13 +33,12 @@ module OmnitureRails3
     end
   
     def sprops_json
-      sprops = Higml.
-        values_for(omniture_input, OmnitureRails3::TREES[controller_name.to_sym], self, omniture_priority_map || {}).
-        delete_if{|k,v| !v}
-      
+      sprops = Higml.values_for(omniture_input, OmnitureRails3::TREES[controller_name.to_sym], self, omniture_priority_map || {})
+        
       transform_sprops(sprops)
       
-      sprops.inject({}){|return_value, value| return_value[value[0]] = h(value[1]); return_value }. #html escape
+      sprops.delete_if{|k,v| !v}.
+        inject({}){|return_value, value| return_value[value[0]] = h(value[1]); return_value }. #html escape
         to_json.
         gsub(/,\s*"/,",\n\"") #put each variable on a separate line
     end
