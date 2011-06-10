@@ -65,9 +65,9 @@ describe OmnitureRails3 do
       page.should_not have_content(%q{"noscript_img_src":"http://test/0"})
       page.should_not have_content(%q{"tracking_account":"ignore"})
       
-      page.should have_content(%Q{src="#{OmnitureRails3.config.noscript_img_src}"})
-      page.should have_content(%Q{"s.visitorNamespace="#{OmnitureRails3.config.visitor_namespace}"})
-      page.should have_content(%Q{"var s_account="#{OmnitureRails3.config.tracking_vccount}";"})
+      page.body.should include(%Q{src="#{OmnitureRails3.config.noscript_img_src}"})
+      page.body.should include(%Q{s.visitorNamespace="#{OmnitureRails3.config.visitor_namespace}"})
+      page.body.should include(%Q{var s_account="#{OmnitureRails3.config.tracking_account}";})
     end
   end
 end
