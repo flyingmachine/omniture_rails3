@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    omniture_rails3 (0.0.1)
+    omniture_rails3 (0.0.3)
       higml (= 0.0.1)
       rails (~> 3.0)
 

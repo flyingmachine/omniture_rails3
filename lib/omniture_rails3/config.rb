@@ -15,14 +15,7 @@ module OmnitureRails3
       when String: set_with_string(config)
       end
       
-      Higml.config.set({
-        "global_pairs" => {
-          :visitor_namespace => visitor_namespace,
-          :tracking_account  => tracking_account,
-          :noscript_img_src  => noscript_img_src
-        },
-        "higml_directory" => self.higml_directory
-      })
+      Higml.config.set({"higml_directory" => self.higml_directory})
     end
     
     def set_with_hash(config)

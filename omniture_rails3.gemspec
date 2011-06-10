@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.summary = "Insert OmnitureRails3 summary."
   s.description = "Insert OmnitureRails3 description."
   s.files = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.textile"]
-  s.version = "0.0.1"
+  s.version = "0.0.3"
   
   s.add_dependency "rails", "~> 3.0"
   s.add_dependency "higml", "0.0.1"

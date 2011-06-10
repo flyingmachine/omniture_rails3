@@ -61,9 +61,13 @@ describe OmnitureRails3 do
     #sc_directory prop_map tracking_account visitor_namespace noscript_img_src
     it "prints omniture-specific configuration correctly" do
       visit users_path
-      page.should have_content(%q{"visitor_namespace":"test_namespace"})
-      page.should have_content(%q{"noscript_img_src":"http://test/0"})
-      page.should have_content(%q{"tracking_account":"ignore"})
+      page.should_not have_content(%q{"visitor_namespace":"test_namespace"})
+      page.should_not have_content(%q{"noscript_img_src":"http://test/0"})
+      page.should_not have_content(%q{"tracking_account":"ignore"})
+      
+      page.should have_content(%Q{src="#{OmnitureRails3.config.noscript_img_src}"})
+      page.should have_content(%Q{"s.visitorNamespace="#{OmnitureRails3.config.visitor_namespace}"})
+      page.should have_content(%Q{"var s_account="#{OmnitureRails3.config.tracking_vccount}";"})
     end
   end
 end
