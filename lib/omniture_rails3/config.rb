@@ -10,9 +10,9 @@ module OmnitureRails3
     
     def set(config)
       case config
-      when Hash: set_with_hash(config)
-      when IO: set_with_io(config)
-      when String: set_with_string(config)
+      when Hash then set_with_hash(config)
+      when IO then set_with_io(config)
+      when String then set_with_string(config)
       end
       
       Higml.config.set({"higml_directory" => self.higml_directory})
